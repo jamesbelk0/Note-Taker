@@ -15,7 +15,7 @@ class Save {
     }
 
 
-    getEnabledCategories() {
+    getNotes() {
         return this.read().then(notes => {
             let parsedNotes;
             try {
@@ -28,20 +28,20 @@ class Save {
     }
 
     addNote(note) {
-        const { title, text } = note;
+        const {title, text} = note;
         if (!title || !text) {
             throw new Error('Please fill in title and text block! They clearly cannot be blank!');
         }
-        const newNote = { title, text, id: uuid() };
+        const newNote = {title, text, id: uuid()};
 
-        return this.retrieveNotes()
+        return this.getNotes()
             .then(notes => [...notes, newNote])
             .then(updatedNotes => this.write(updatedNotes))
             .then(() => newNote);
     }
 
     deleteNote(id) {
-        return this.retrieveNotes()
+        return this.getNotes()
             .then(notes => notes.filter(note => note.id !== id))
             .then(filteredNotes => this.write(filteredNotes));
     }

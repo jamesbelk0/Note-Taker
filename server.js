@@ -10,17 +10,17 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('__dirname'));
 
 // Routes
-const apiRoutes = require('./routes/apiRoutes/apiRoutes.js');
-const htmlRoutes = require('./routes/htmlRoutes/htmlRoutes.js');
+const htmlRoutes = require('./routes/html');
+const apiRoutes = require('./routes/api')
 
 app.use(express.static('public'));
 app.use('/api', apiRoutes);
-app.use('/',htmlRoutes)
+app.use('/', htmlRoutes); 
 
 // Listener
 app.listen(PORT, function() {
-    console.log("Note-Taker launch on PORT: ${PORT}")
+    console.log(`Server is live on port ${PORT}!`)
 })
