@@ -1,17 +1,17 @@
 const util = require('util');
 const fs = require('fs');
-const uuid = require('uuid');
+const { uuid } = require('uuidv4');
 
 const readNote = util.promisify(fs.readFile);
 const writeNote = util.promisify(fs.writeFile);
 
 class Save {
     write(note) {
-        return writeNote('db/db.json', JSON.stringify(note));
+        return writeNote('database/db.json', JSON.stringify(note));
     }
 
     read() {
-        return readNote('db/db.json', 'utf8');
+        return readNote('database/db.json', 'utf8');
     }
 
 
@@ -33,6 +33,7 @@ class Save {
             throw new Error('Please fill in title and text block! They clearly cannot be blank!');
         }
         const newNote = {title, text, id: uuid()};
+        console.log(uuid());
 
         return this.getNotes()
             .then(notes => [...notes, newNote])
