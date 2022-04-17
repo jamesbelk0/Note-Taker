@@ -22,6 +22,12 @@
 - WHEN I click on the Write icon in the navigation at the top of the page
 - THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 
+## Link to Code
+- http://github/jamesbelk0/Note-Taker
+
+## Link to Heroku
+- https://nameless-journey-59567.herokuapp.com/
+
 ## Link to screenshot/media:
 - ![Image of final page](./assets/images/Start-Page.png)
 - ![Image of final page](./assets/images/Pulled-Up-A-Note.png)
